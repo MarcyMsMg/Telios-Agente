@@ -1,0 +1,1 @@
+﻿Error HTTP 401 en Webpay: ocurre cuando las credenciales del ambiente de integración se usan en producción o cuando la API Key tiene espacios. Solución: reemplazar el identificador de llave y el secreto de API por los de producción y revisar que no tengan espacios.

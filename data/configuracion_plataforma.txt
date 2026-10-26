@@ -1,0 +1,1 @@
+﻿Configuración de plataforma NubePyme: ajuste de datos tributarios (razón social, RUT de empresa) tras un cambio societario, desde el panel de configuración de la cuenta.

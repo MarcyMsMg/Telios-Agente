@@ -1,0 +1,1 @@
+﻿Error 422 en OneClick: solicitud de anulación no procesada porque el monto es superior al cobrado originalmente. Solución: anular por un monto igual o menor al cobrado.

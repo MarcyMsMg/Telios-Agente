@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+chroma_db/
+sesiones/
+tickets_output/
+tests/resultados_pruebas.md

@@ -1,0 +1,4 @@
+langchain-core>=0.3
+langchain-ollama>=0.2
+chromadb>=0.5
+ollama>=0.4

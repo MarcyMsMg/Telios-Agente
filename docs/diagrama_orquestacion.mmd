@@ -1,0 +1,28 @@
+flowchart TD
+    %% Cada flecha <--> = el modelo llama a la tool y recibe la observación (ciclo ReAct)
+    T([Técnico de soporte]) -->|consulta o incidencia| G1[Guardrail 1: AnonimizerTool<br/>oculta RUT, email, teléfono]
+    G1 --> MC[(Memoria corto plazo<br/>ventana k=5 + sesiones/*.json)]
+    MC --> LLM{{LLM local llama3.2:3b<br/>vía Ollama + tool calling<br/>ciclo ReAct, máx. 6 iteraciones}}
+
+    LLM <-->|"1 incidencia nueva"| CP[ClasificarPrioridadTool<br/>ALTA / MEDIA / BAJA + plan]
+    LLM <-->|"2 consulta"| RAG[RAGQueryTool]
+    LLM <-->|"casos anteriores"| BC[BuscarCasosPreviosTool]
+    LLM <-->|"técnico pide guardar"| TW[TicketWriterTool]
+    RAG <--> KB[(ChromaDB telios_kb_v2<br/>nomic-embed-text, distancia coseno ≤ 0.30)]
+    BC <--> ML[(ChromaDB telios_memoria<br/>casos atendidos)]
+    TW --> J[(tickets_output/*.json)]
+    TW --> ML
+
+    LLM --> SUP{Supervisor del plan<br/>¿hizo los pasos obligatorios<br/>de su prioridad?}
+    SUP -.->|"no: ejecuta pasos faltantes"| LLM
+    SUP -->|sí| G2{Guardrail 2<br/>¿NO_INFO y prioridad ALTA o MEDIA<br/>sin ticket guardado?}
+    G2 -->|sí| ESC[Respuesta de protocolo +<br/>ticket ESCALADO a Nivel 3] --> R
+    G2 -->|no| R([Respuesta al técnico<br/>validación humana])
+    R --> MC
+
+    classDef tool fill:#d9d2f0,stroke:#5b4a9e,color:#1e1440;
+    classDef mem fill:#d4ecd2,stroke:#3f7a3a,color:#123d10;
+    classDef guard fill:#fde3c4,stroke:#b8721d,color:#4a2a05;
+    class CP,RAG,BC,TW tool;
+    class MC,KB,ML,J mem;
+    class G1,G2,ESC,SUP guard;

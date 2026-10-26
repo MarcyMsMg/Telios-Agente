@@ -1,0 +1,21 @@
+﻿"Archivo","Estado","Resultado"
+"ticket_20261015_170204.json","BORRADOR_RESPUESTA","1. Tipo de Problema: Error HTTP 401 en Webpay
+2. Posible Causa Raíz: ocurre cuando las credenciales del ambiente de integración se usan en producción o cuando la API Key tiene espacios.
+3. Pasos de Solución Recomendados: reemplazar el identificador de llave y el secreto de API por los de producción y revisar que no tengan espacios.
+4. Fuentes Consultadas: [FUENTE: manual_webpay.txt]
+5. Borrador de Respuesta para el Cliente:
+Estimado cliente,
+
+El error HTTP 401 en Webpay se produce cuando se utilizan credenciales del ambiente de integración en producción o cuando la API Key tiene espacios. Para solucionar este problema, debes reemplazar el identificador de llave y el secreto de API por los de producción y asegurarte de que no tengan espacios. Esto garantizará que las credenciales se utilicen correctamente y se resuelva el error.
+
+Equipo de Soporte Telios"
+"ticket_20261015_170221.json","ESCALADO","1. Tipo de Problema: Incidencia sin cobertura en la base de conocimiento.
+2. Posible Causa Raíz: No determinada; no hay información documentada.
+3. Pasos de Solución Recomendados: Escalar el caso a Soporte Nivel 3.
+4. Fuentes Consultadas: Sin información en la base de conocimiento; se recomienda escalar el caso.
+5. Borrador de Respuesta para el Cliente:
+Estimado cliente,
+
+Hemos recibido su solicitud y la estamos derivando a un especialista. Le contactaremos a la brevedad.
+
+Equipo de Soporte Telios"
